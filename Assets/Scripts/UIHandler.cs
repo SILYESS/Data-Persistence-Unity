@@ -19,7 +19,11 @@ public class UIHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        MenuManager.instance.LoadScore();
+        MenuManager.instance.LoadPlayerName();
+        playerName.text = MenuManager.instance.playerName;
+        score = MenuManager.instance.score;
+
     }
 
     // Update is called once per frame
@@ -32,6 +36,8 @@ public class UIHandler : MonoBehaviour
 
     public void QuitGame()
     {
+        MenuManager.instance.SaveScore();
+        MenuManager.instance.SavePlayerName();
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
 #else

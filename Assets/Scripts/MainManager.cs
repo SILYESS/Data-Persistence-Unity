@@ -71,6 +71,7 @@ public class MainManager : MonoBehaviour
         if (m_Points > MenuManager.instance.score)
         {
             MenuManager.instance.score = m_Points;
+            MenuManager.instance.SaveScore();
         }
     }
 
@@ -78,5 +79,7 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+        MenuManager.instance.SaveScore();
+        MenuManager.instance.SavePlayerName();
     }
 }
