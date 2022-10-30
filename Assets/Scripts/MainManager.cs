@@ -11,6 +11,7 @@ public class MainManager : MonoBehaviour
     public Rigidbody Ball;
 
     public Text ScoreText;
+    public Text scoreText1;
     public GameObject GameOverText;
     
     private bool m_Started = false;
@@ -40,6 +41,7 @@ public class MainManager : MonoBehaviour
 
     private void Update()
     {
+        scoreText1.text = "Best Score : " + MenuManager.instance.playerName + ": " + MenuManager.instance.score;
         if (!m_Started)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -66,6 +68,10 @@ public class MainManager : MonoBehaviour
     {
         m_Points += point;
         ScoreText.text = $"Score : {m_Points}";
+        if (m_Points > MenuManager.instance.score)
+        {
+            MenuManager.instance.score = m_Points;
+        }
     }
 
     public void GameOver()

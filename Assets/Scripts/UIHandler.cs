@@ -11,10 +11,11 @@ using UnityEditor;
 public class UIHandler : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
-    public InputField playerName;
+    public TMP_InputField playerName;
     public Button startButton;
     public Button quitButton;
     public int score;
+    public string inputText;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,9 @@ public class UIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = "Best Score: " + playerName.text + score;
+        inputText = playerName.text;
+        MenuManager.instance.playerName = inputText;
+        scoreText.text = "Best Score: " + inputText + ": " + score;
     }
 
     public void QuitGame()
